@@ -1,4 +1,11 @@
 # CS-411
 
-Members
+Members:
+
 Daniel
+
+Marcus
+
+Kenneth
+
+Janice

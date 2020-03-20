@@ -1,0 +1,22 @@
+Group 2 Project Proposal
+
+Daniel Bastidas
+Marcus Bruccoleri
+Rashid Mammadov
+Janice He
+Kenneth Kim
+
+PRIMARY IDEA: Web App to find recipes based on ingredients
+
+  For our primary idea, we would like to create a web application that displays a variety of recipes that include ingredients that the
+user inputs. For instance, a user may want to find recipes including paprika to make use of it in his/her pantry. Our database will include
+recipes and ingredients to find the best matches. We will utilize the Recipe Search API to find the top recipes based on the inputted 
+ingredients as well as the Nutritionix API to display nutirition facts on the dishes displayed. Third-party authentication will be
+enabled through Gmail login.
+
+SECONDARY IDEA: App to track medication side effects
+
+  For our secondary idea, we would like to create an app that tracks medication side effects based on a variety of factors
+including what the user ate and what medications they are taking at a certain time. Our database will include medications and
+side effects to correlate what is causing the symptoms. We will utilize the Health API and the GoodRX API to display dosage options for
+various drugs. Third-party authentication will be enabled through Gmail login. 
