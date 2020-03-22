@@ -2,6 +2,8 @@
 
 Members:
 
+Rashid
+
 Daniel
 
 Marcus
