@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import Navbar from "./components/navbar.component";
 import RecipesList from "./components/recipeList.component";
 import SearchIngredient from "./components/search.component";
+import Table from 'react-bootstrap/Table'
 
 function App() {
   return (

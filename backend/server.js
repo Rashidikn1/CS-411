@@ -23,8 +23,12 @@ connection.once('open', () => {
 
 
 const usersRouter = require('./routes/users');
+const searchRouter = require('./routes/search');
 
 app.use('/users', usersRouter);
+app.use('/search', searchRouter);
+
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 })

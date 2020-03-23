@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card'
 
 export default class SearchIngredient extends Component{
   constructor(props){
@@ -8,7 +11,8 @@ export default class SearchIngredient extends Component{
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state ={
-      searchItem: ''
+      searchItem: '',
+      searchResults: []
     }
   }
 
@@ -20,6 +24,17 @@ export default class SearchIngredient extends Component{
   onSubmit(e){
     e.preventDefault();
     console.log(this.state.searchItem);
+
+    const search = {
+      searchItem: this.state.searchItem
+    }
+
+    axios.post('http://localhost:5000/search', search)
+      .then(res => {
+        console.log(res);
+        this.setState({ searchResults: res.data.hits});
+        console.log(this.state.searchResults)
+      });
   }
 
   render() {
@@ -37,6 +52,25 @@ export default class SearchIngredient extends Component{
             />
           </div>
         </form>
+
+          
+        <div className = "row">
+            {this.state.searchResults.map((recipe,index) => {
+              return (
+                <div className ="px-2 py-2 mx-auto">
+                <Card style ={{width: '18rem'}}>
+                  <Card.Img variant="top" src={recipe.recipe.image}/>
+                  <Card.Body>
+                  <Card.Title>{recipe.recipe.label}</Card.Title>
+                  <Card.Text>Test</Card.Text>
+                  </Card.Body>
+                </Card>
+                </div>
+
+              )})}
+        </div>
+
+
       </div>
     )
   }
