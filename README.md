@@ -41,4 +41,3 @@ $ npm start
  - implement "favorites" button into each recipe card
  - Connect Nutritionix API
  - make the website not look like total crap
- 
