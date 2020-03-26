@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import axios from "./api";
 
 import RecipeList from "./recipeList.component";
 
@@ -56,7 +56,7 @@ export default class SearchIngredient extends Component {
 
     //note: this is a request going to our node server, not the Edamam server
     // ".then" allows asynchronous running of the method and is only called when we get a response
-    axios.post("http://localhost:5000/search", search).then(res => {
+    axios.post(`/search`, search).then(res => {
       //console.log(res);
 
       //set the state of our search results to the response from our server
@@ -80,7 +80,7 @@ export default class SearchIngredient extends Component {
         numResults: this.state.numResults
       };
 
-      axios.post("http://localhost:5000/search", search).then(res => {
+      axios.post("/search", search).then(res => {
         //console.log(res);
         this.setState({ searchResults: res.data.hits });
         //console.log(this.state.searchResults);
