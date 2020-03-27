@@ -40,4 +40,4 @@ $ npm start
  - Create Fridge section in order to maintain list of User's ingredients and saved recipes
  - implement "favorites" button into each recipe card
  - Connect Nutritionix API
- - make the website not look like total crap
+ - make the website not look like total crap*
