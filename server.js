@@ -26,9 +26,11 @@ connection.once('open', () => {
 
 const usersRouter = require('./routes/users');
 const searchRouter = require('./routes/search');
+const nutritionRouter = require('./routes/nutrition');
 
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
+app.use('/nutrition', nutritionRouter);
 
 
 app.get("*", (req, res) => {
