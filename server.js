@@ -15,22 +15,24 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "411project", "build")))
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true});
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true, useFindAndModify: false});
 
 const connection = mongoose.connection;
 
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
-})
+}).catch( e=> console.log(e))
 
 
 const usersRouter = require('./routes/users');
 const searchRouter = require('./routes/search');
 const nutritionRouter = require('./routes/nutrition');
+const favoritesRouter = require('./routes/favorites');
 
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 app.use('/nutrition', nutritionRouter);
+app.use('/favorites', favoritesRouter);
 
 
 app.get("*", (req, res) => {

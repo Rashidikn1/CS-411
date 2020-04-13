@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Navbar from "./components/navbar.component";
 import SearchIngredient from "./components/search.component";
+import Favorites from "./components/favorites.component";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <div className="container">
           {/* I believe this is where we add routes to the different parts of the website */}
           <Route path="/search" exact component={SearchIngredient} />
+          <Route path="/favorites" component={Favorites} />
         </div>
       </div>
     </Router>

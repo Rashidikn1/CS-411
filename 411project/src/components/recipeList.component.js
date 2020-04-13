@@ -1,8 +1,10 @@
 import React, { Component, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Modal from "react-bootstrap/Modal";
 import RecipeModal from "./recipeModal.component";
+const axios = require("axios");
 /**
  * @class recipeList
  *
@@ -36,13 +38,30 @@ export default class recipeList extends Component {
   }
   /**
    * Called when the modal is closed
-   * 
+   *
    * sets state of open to false
    */
   handleCloseRecipeModal() {
     this.setState({
       open: false
     });
+  }
+
+  onFavoriteClick(recipe) {
+    console.log("pressed favorite");
+    const ingredientsArr = recipe.recipe.ingredientLines.map(i => i);
+    const data = {
+      username: "test",
+      recipeTitle: recipe.recipe.label,
+      recipeURL: recipe.recipe.url,
+      ingredients: ingredientsArr
+    };
+    axios
+      .post("/users/addfavorite", data)
+      .then(() => {
+        console.log("Successfully added");
+      })
+      .catch(err => console.log(err.json));
   }
   render() {
     {
@@ -66,25 +85,36 @@ export default class recipeList extends Component {
                     <Card.Body>
                       <Card.Title>{recipe.recipe.label}</Card.Title>
                       <Card.Text>{recipe.recipe.source}</Card.Text>
-                      <Button
-                        className="text-left"
-                        href={recipe.recipe.url}
-                        target="_blank"
-                        variant="outline-dark"
-                      >
-                        Let's cook
-                      </Button>
-                      <Button
-                        className="text-right"
-                        onClick={this.onOpenRecipeModal.bind(
-                          recipe.recipe,
-                          recipe
-                        )}
-                        target="_blank"
-                        variant="outline-dark"
-                      >
-                        More info
-                      </Button>
+                      <div className="mb-1 text-center h-100">
+                        <ButtonGroup size="sm">
+                          <Button
+                            href={recipe.recipe.url}
+                            target="_blank"
+                            variant="outline-dark"
+                          >
+                            Website
+                          </Button>
+                          <Button
+                            onClick={this.onOpenRecipeModal.bind(
+                              recipe.recipe,
+                              recipe
+                            )}
+                            target="_blank"
+                            variant="outline-dark"
+                          >
+                            More info
+                          </Button>
+                          <Button
+                            onClick={this.onFavoriteClick.bind(
+                              recipe.recipe,
+                              recipe
+                            )}
+                            variant="outline-warning"
+                          >
+                            Favorite
+                          </Button>
+                        </ButtonGroup>
+                      </div>
                     </Card.Body>
                   </Card>
                 </div>
